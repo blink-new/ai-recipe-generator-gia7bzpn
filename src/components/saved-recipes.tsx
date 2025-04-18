@@ -5,7 +5,7 @@ import { Button } from './ui/button'
 import { Loader2, BookOpen, Search, Trash2 } from 'lucide-react'
 import { Input } from './ui/input'
 import { RecipeCard } from './recipe-card'
-import { toast } from './ui/use-toast'
+import { toast } from '@/hooks/use-toast'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
 
 export function SavedRecipes({ supabase, user }) {

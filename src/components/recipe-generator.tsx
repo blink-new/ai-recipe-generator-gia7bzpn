@@ -5,7 +5,7 @@ import { Input } from './ui/input'
 import { Card, CardContent } from './ui/card'
 import { Badge } from './ui/badge'
 import { Loader2, Plus, X, Save, ChefHat } from 'lucide-react'
-import { toast } from './ui/use-toast'
+import { toast } from '@/hooks/use-toast'
 import { RecipeCard } from './recipe-card'
 
 export function RecipeGenerator({ supabase, user }) {

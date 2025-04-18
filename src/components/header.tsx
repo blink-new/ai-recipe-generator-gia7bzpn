@@ -15,7 +15,7 @@ import { ChefHat, LogIn, LogOut, User } from 'lucide-react'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
-import { toast } from './ui/use-toast'
+import { toast } from '@/hooks/use-toast'
 
 export function Header({ user, supabase }) {
   const [isAuthDialogOpen, setIsAuthDialogOpen] = useState(false)
