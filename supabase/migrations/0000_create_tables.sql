@@ -17,6 +17,12 @@ CREATE TABLE IF NOT EXISTS recipes (
 -- Create RLS policies for recipes
 ALTER TABLE recipes ENABLE ROW LEVEL SECURITY;
 
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Users can view their own recipes" ON recipes;
+DROP POLICY IF EXISTS "Users can insert their own recipes" ON recipes;
+DROP POLICY IF EXISTS "Users can update their own recipes" ON recipes;
+DROP POLICY IF EXISTS "Users can delete their own recipes" ON recipes;
+
 -- Policy for users to select their own recipes
 CREATE POLICY "Users can view their own recipes" 
   ON recipes FOR SELECT 
@@ -45,6 +51,9 @@ BEGIN
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+-- Drop existing trigger if it exists
+DROP TRIGGER IF EXISTS update_recipes_updated_at ON recipes;
 
 -- Create trigger to update updated_at on recipes
 CREATE TRIGGER update_recipes_updated_at
