@@ -1,6 +1,7 @@
 
-import { serve } from "std/http/server.ts"
-import { createClient } from "supabase"
+// Follow Deno's module system
+import { serve } from "https://deno.land/std@0.177.0/http/server.ts"
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.21.0"
 
 // Sample recipe images for demonstration
 const RECIPE_IMAGES = [
