@@ -1,54 +1,77 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# AI Recipe Generator
 
-Currently, two official plugins are available:
+A web application that generates recipes based on ingredients available in your fridge using AI and connects to Supabase for data storage.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Ingredient-Based Recipe Generation**: Enter ingredients you have on hand and get AI-generated recipes
+- **User Authentication**: Create an account to save and manage your favorite recipes
+- **Recipe Collection**: Save, view, and delete your generated recipes
+- **Responsive Design**: Works on desktop and mobile devices
+- **Dark Mode Support**: Toggle between light and dark themes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Frontend**: React with Vite, TypeScript, Tailwind CSS
+- **UI Components**: ShadCN UI
+- **Backend**: Supabase (Authentication, Database, Edge Functions)
+- **AI**: OpenAI API for recipe generation
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- Node.js (v16 or higher)
+- npm or yarn
+- Supabase account
+- OpenAI API key
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Copy `.env.example` to `.env.local` and fill in your Supabase credentials:
+   ```
+   VITE_SUPABASE_URL=your_supabase_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+4. Set up your Supabase project:
+   - Create a new Supabase project
+   - Run the SQL migrations in the `supabase/migrations` folder
+   - Deploy the Edge Functions in the `supabase/functions` folder
+   - Set the `OPENAI_API_KEY` in your Supabase project settings
+
+5. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Usage
+
+1. **Generate Recipes**:
+   - Enter ingredients you have available
+   - Click "Generate Recipe" to get an AI-generated recipe
+   - Save recipes you like to your collection
+
+2. **Manage Your Recipes**:
+   - View all your saved recipes
+   - Search through your recipe collection
+   - Delete recipes you no longer want
+
+## Project Structure
+
+- `/src`: Frontend React application
+  - `/components`: UI components
+  - `/hooks`: Custom React hooks
+  - `/lib`: Utility functions
+- `/supabase`: Supabase configuration
+  - `/migrations`: SQL migrations for database setup
+  - `/functions`: Edge Functions for serverless backend logic
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
